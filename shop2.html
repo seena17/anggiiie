@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anggie' Shop</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      padding: 100px 50px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 20px 50px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e91e63;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #e91e63;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .discount {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #e91e63;
+      color: white;
+      font-size: 14px;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    .product-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .price {
+      color: #e91e63;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+
+    .add-cart {
+      margin-top: 10px;
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .add-cart:hover {
+      background-color: #c2185b;
+    }
+
+    .cart-display {
+      margin-top: 50px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 30px;
+    }
+
+    .cart-display h3 {
+      margin-bottom: 10px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cart-item button {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Anggie' Shop</div>
+    <nav>
+      <ul>
+        <li><a href="login1.html">Login</a></li>
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="about1.html">About</a></li>
+        <li><a href="shop2.html">Shop</a></li>
+        <li><a href="cart1.html">Cart</a></li>
+        <li><a href="contact1.html">Contact</a></li>
+        <li><a href="invoice1.html">Invoice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2>Latest Products</h2>
+
+  <div class="product-grid">
+    <div class="product">
+      <div class="discount">-55%</div>
+      <img src="serum1.jpg" alt="Serum 1">
+      <p class="product-title">Glad2glow Peeling Solution AHA BHA PHA INTENSIVE</p>
+      <p><span class="price">Rp. 80.700</span> <span class="old-price">Rp. 199.000</span></p>
+      <button class="add-cart" onclick="addToCart('Glad2glow Peeling Solution AHA BHA PHA INTENSIVE', 80700)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-43%</div>
+      <img src="serum2.jpg" alt="Serum 2">
+      <p class="product-title">Glad2glow Centella Salicylic Acid Acne</p>
+      <p><span class="price">Rp. 44.890</span> <span class="old-price">Rp. 79.000</span></p>
+      <button class="add-cart" onclick="addToCart('Glad2glow Centella Salicylic Acid Acne', 44890)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-58%</div>
+      <img src="serum3.jpg" alt="Serum 3">
+      <p class="product-title">Glad2glow Pomegranate Niacinamide Power Bright White</p>
+      <p><span class="price">Rp. 31.890</span> <span class="old-price">Rp. 89.000</span></p>
+      <button class="add-cart" onclick="addToCart('Glad2glow Pomegranate Niacinamide Power Bright White', 31890)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-53%</div>
+      <img src="mois1.jpg" alt="Moisturizer 1">
+      <p class="product-title">The Originote Hyalucera Moisturizer Gel</p>
+      <p><span class="price">Rp. 41.900</span> <span class="old-price">Rp. 75.000</span></p>
+      <button class="add-cart" onclick="addToCart('The Originote Hyalucera Moisturizer Gel', 41900)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-37%</div>
+      <img src="mois2.jpg" alt="Moisturizer 2">
+      <p class="product-title">Skintific MSH Niacinamide Brightening Moisturizer Gel</p>
+      <p><span class="price">Rp. 118.056</span> <span class="old-price">Rp. 199.000</span></p>
+      <button class="add-cart" onclick="addToCart('Skintific MSH Niacinamide Brightening Moisturizer Gel', 118056)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-68%</div>
+      <img src="mois3.jpg" alt="Moisterizer 3">
+      <p class="product-title">Glad2glow Pomegranate Niacinamide Brightening Moisterizer</p>
+      <p><span class="price">Rp. 34.100</span> <span class="old-price">Rp. 109.000</span></p>
+      <button class="add-cart" onclick="addToCart('Glad2glow Pomegranate Niacinamide Brightening Moisterizer', 34100)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+     <div class="discount">-60%</div>
+      <img src="fc1.jpg" alt="Facial Wash 1">
+      <p class="product-title">Skintific 5X Ceramide Low pH Cleanser</p>
+      <p><span class="price">Rp. 78.990</span> <span class="old-price">Rp. 199.000</span></p>
+      <button class="add-cart" onclick="addToCart('Skintific 5X Ceramide Low pH Cleanser', 78990)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-16%</div>
+      <img src="fc2.jpg" alt="Facial Wash 2">
+      <p class="product-title">Scora 1% Salicylic Acid Gentle Low pH Cleanser</p>
+      <p><span class="price">Rp. 37.955</span> <span class="old-price">Rp. 45.000</span></p>
+      <button class="add-cart" onclick="addToCart('Scora 1% Salicylic Acid Gentle Low pH Cleanser', 37955)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-58%</div>
+      <img src="fc3.jpg" alt="Facial Wash 3">
+      <p class="product-title">Glad2glow Blueberry Ceramide Low pH Gel Cleanser</p>
+      <p><span class="price">Rp. 38.990</span> <span class="old-price">Rp. 99.000</span></p>
+      <button class="add-cart" onclick="addToCart('Glad2glow Blueberry Ceramide Low pH Gel Cleanser', 38990)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-64%</div>
+      <img src="mc1.jpg" alt="Micellar Water 1">
+      <p class="product-title">Skintific Mugwort alm Down Micellar Water</p>
+      <p><span class="price">Rp. 70.890</span> <span class="old-price">Rp. 199.000</span></p>
+      <button class="add-cart" onclick="addToCart('Skintific Mugwort alm Down Micellar Water', 70890)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-44%</div>
+      <img src="mc2.jpg" alt="Micellar Water 2">
+      <p class="product-title">The Originote Hyalurose Micellar Water</p>
+      <p><span class="price">Rp. 45.800</span> <span class="old-price">Rp. 82.000</span></p>
+      <button class="add-cart" onclick="addToCart('The Originote Hyalurose Micellar Water', 45800)">Add To Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="discount">-53%</div>
+      <img src="mc3.jpg" alt="Micellar Water 3">
+      <p class="product-title">Glad2glow Make up Remove Cleansing Water</p>
+      <p><span class="price">Rp. 43.900</span> <span class="old-price">Rp. 100.000</span></p>
+      <button class="add-cart" onclick="addToCart('Glad2glow Make up Remove Cleansing Water', 43900)">Add To Cart</button>
+    </div>
+  </div>
+
+  <div class="cart-display" id="cart">
+    <h3>Keranjang:</h3>
+    <ul id="cart-items"></ul>
+  </div>
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(name, price) {
+      cartItems.push({ name, price });
+      saveCart();
+      updateCartDisplay();
+    }
+
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      saveCart();
+      updateCartDisplay();
+    }
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    }
+
+    function updateCartDisplay() {
+      const list = document.getElementById('cart-items');
+      list.innerHTML = '';
+      cartItems.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'cart-item';
+        li.innerHTML = `
+          ${index + 1}. ${item.name} - Rp ${item.price.toLocaleString('id-ID')}
+          <button onclick="removeFromCart(${index})">Hapus</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    updateCartDisplay();
+  </script>
+
+</body>
+</html>

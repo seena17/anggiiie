@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #fae0e0;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e84393;
+    }
+
+    .about {
+      padding: 80px 10%;
+    }
+
+    .about .heading {
+      text-align: center;
+      font-size: 4rem;
+      margin-bottom: 40px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .about .heading span {
+      color: #e84393;
+    }
+
+    .about .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .about .row .image {
+      flex: 1 1 30%;
+      text-align: center;
+    }
+
+    .about .row .image img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 15px;
+    }
+
+    .about .row .content {
+      flex: 1 1 60%;
+    }
+
+    .about .row .content h3 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .about .row .content p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #e84393;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #c73678;
+    }
+
+    .icons-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      background: #f3f3f3;
+      padding: 50px 10%;
+      margin-top: 60px;
+    }
+
+    .icon-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .icon-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon-box img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .icon-box .content h3 {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .icon-box .content p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index1.html" class="logo">Anggie' Shop</a>
+    <nav>
+      <ul>
+        <li><a href="login1.html">Login</a></li>
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="about1.html">About</a></li>
+        <li><a href="shop2.html">Shop</a></li>
+        <li><a href="cart1.html">Cart</a></li>
+        <li><a href="contact1.html">Contact</a></li>
+        <li><a href="invoice1.html">Invoice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="about" id="about">
+    <h1 class="heading"><span>About</span> Us</h1>
+    <div class="row">
+      <div class="image">
+        <img src="about1.jpg" alt="Best Home Skincare" />
+      </div>
+      <div class="content">
+        <h3>Why Choose Us</h3>
+        <p>"Anggie Shop" lahir dari sebuah mimpi sederhana namun penuh makna — keinginan untuk menghadirkan perawatan kulit yang tidak hanya berkualitas, tetapi juga terjangkau dan terpercaya.</p>
+        <p>Kami tidak hanya menjual produk, tapi juga memberikan konsultasi dan rekomendasi skincare berdasarkan jenis kulit pelanggan untuk membantu setiap orang menemukan rutinitas perawatan yang paling cocok.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="icons-container">
+    <div class="icon-box">
+      <img src="icon1.png" alt="Free Shipping" />
+      <div class="content">
+        <h3>Free Shipping</h3>
+        <p>On All Orders</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <img src="icon2.png" alt="10 Days Return" />
+      <div class="content">
+        <h3>10 Days Returns</h3>
+        <p>Moneyback Guarantee</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <img src="icon3.png" alt="Offer & Gift" />
+      <div class="content">
+        <h3>Offer & Gift</h3>
+        <p>On All Orders</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <img src="icon4.png" alt="Secure Payment" />
+      <div class="content">
+        <h3>Secure Payment</h3>
+        <p>Protected By Paypal</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

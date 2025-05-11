@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice - Anggie' Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 24px;
+      color: #880e4f;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .invoice {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .total {
+      font-weight: bold;
+      color: #e91e63;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 12px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #c2185b;
+    }
+
+    @media (max-width: 768px) {
+      .invoice {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+  @media print {
+    header, nav {
+      display: none;
+    }
+
+    .btn {
+      display: none;
+    }
+}
+
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Anggie' Shop</div>
+    <nav>
+      <ul>
+        <li><a href="login1.html">Login</a></li>
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="about1.html">About</a></li>
+        <li><a href="shop2.html">Shop</a></li>
+        <li><a href="cart1.html">Cart</a></li>
+        <li><a href="contact1.html">Contact</a></li>
+        <li><a href="invoice1.html">Invoice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="invoice">
+    <h2>Invoice Pembelian</h2>
+    <table id="invoice-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Produk</th>
+          <th>Harga (Rp)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <p class="total" id="total-harga"></p>
+    <p>Invoice ID: <span id="invoice-id"></span></p>
+    <p>Tanggal: <span id="invoice-date"></span></p>
+
+    <button class="btn" onclick="window.print()">Cetak Invoice</button>
+  </div>
+
+  <script>
+    const invoiceTable = document.querySelector("#invoice-table tbody");
+    const totalHargaElem = document.getElementById("total-harga");
+    const invoiceIdElem = document.getElementById("invoice-id");
+    const invoiceDateElem = document.getElementById("invoice-date");
+
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let total = 0;
+
+    cartItems.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${item.name}</td>
+        <td>${item.price.toLocaleString('id-ID')}</td>
+      `;
+      invoiceTable.appendChild(row);
+      total += item.price;
+    });
+
+    totalHargaElem.innerText = `Total: Rp ${total.toLocaleString('id-ID')}`;
+
+    const generateInvoiceID = () => 'INV-' + Date.now().toString().slice(-6);
+    const today = new Date();
+    const tanggal = today.toLocaleDateString('id-ID', {
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+
+    invoiceIdElem.innerText = generateInvoiceID();
+    invoiceDateElem.innerText = tanggal;
+
+    window.onload = () => {
+      setTimeout(() => {
+        window.print();
+      }, 1000);
+    };
+  </script>
+
+</body>
+</html>

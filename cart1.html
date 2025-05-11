@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout - Anggie' Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 30px;
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 24px;
+      color: #880e4f;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #f8bbd0;
+      color: #880e4f;
+    }
+
+    .total-row {
+      font-weight: bold;
+      background-color: #fce4ec;
+    }
+
+    .form-section {
+      margin-top: 40px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      background-color: #e91e63;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Anggie' Shop</div>
+    <nav>
+      <ul>
+        <li><a href="login1.html">Login</a></li>
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="about1.html">About</a></li>
+        <li><a href="shop2.html">Shop</a></li>
+        <li><a href="cart1.html">Cart</a></li>
+        <li><a href="contact1.html">Contact</a></li>
+        <li><a href="invoice1.html">Invoice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2>Checkout</h2>
+  <table id="cartTable">
+  <thead>
+    <tr>
+      <th>Nama</th>
+      <th>Harga</th>
+    </tr>
+  </thead>
+  <tbody id="cartItems"></tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td>Total</td>
+      <td id="totalPrice">Rp 0</td>
+    </tr>
+  </tfoot>
+</table>
+
+  <div class="form-section">
+    <label for="name">Nama Lengkap</label>
+    <input type="text" id="name" placeholder="Contoh: Anggie">
+
+    <label for="address">Alamat Lengkap</label>
+    <textarea id="address" rows="3" placeholder="Nama jalan, RT/RW, kelurahan, kecamatan, kota"></textarea>
+
+    <label for="method">Metode Pembayaran</label>
+    <select id="method">
+      <option value="COD">Bayar di Tempat (COD)</option>
+      <option value="BRI">Tf Bank BRI</option>
+      <option value="BCA">Tf Bank BCA</option>
+      <option value="MANDIRI">Tf Bank MANDIRI</option>
+      <option value="QRIS">QRIS</option>
+    </select>
+
+    <button class="checkout-btn" onclick="sendToWhatsApp()">Kirim Pesanan via WhatsApp</button>
+  </div>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function renderCart() {
+  const cartItems = document.getElementById('cartItems');
+  const totalPriceEl = document.getElementById('totalPrice');
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price;
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>Rp ${item.price.toLocaleString('id-ID')}</td>
+    `;
+    cartItems.appendChild(row);
+  });
+
+  totalPriceEl.textContent = 'Rp ' + total.toLocaleString('id-ID');
+  return total;
+}
+
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const method = document.getElementById('method').value;
+      const total = renderCart();
+
+      if (!name || !address) {
+        alert('Harap isi nama dan alamat lengkap!');
+        return;
+      }
+
+      let message = `Halo, saya ingin memesan produk berikut:\n\n`;
+      cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} - Rp ${item.price.toLocaleString('id-ID')}\n`;
+      });
+
+      message += `\nTotal: Rp ${total.toLocaleString('id-ID')}`;
+      message += `\n\nNama: ${name}\nAlamat: ${address}\nMetode Pembayaran: ${method}`;
+      message += `\n\nTerima kasih 🙏`;
+
+      const encodedMsg = encodeURIComponent(message);
+      const waNumber = '6283825131645'; // Pastikan tanpa tanda plus
+      window.open(`https://wa.me/${waNumber}?text=${encodedMsg}`, '_blank');
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

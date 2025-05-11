@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anggie' Shop</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 50px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+      background: #fff;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .logo span {
+      color: #f08080;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f08080;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icons a {
+      font-size: 18px;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    .icons a:hover {
+      color: #f08080;
+    }
+
+    #toggler {
+      display: none;
+    }
+
+    .fa-bars {
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .fa-bars {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        align-items: center;
+      }
+
+      #toggler:checked ~ nav ul {
+        max-height: 300px;
+      }
+    }
+
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 10%;
+      flex-wrap: wrap;
+      height: 100vh;
+      background: url('bg1.jpg') no-repeat center center/cover;
+      color: #fff;
+    }
+
+    .home .content {
+      max-width: 600px;
+    }
+
+    .home .content h3 {
+      font-size: 58px;
+      color: #222;
+    }
+
+    .home .content span {
+      font-size: 35px;
+      color: #e46e6e;
+      font-weight: 800;
+    }
+
+    .home .content p {
+      font-size: 20px;
+      margin: 30px 0;
+      color: #555;
+    }
+
+    .home .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      font-size: 16px;
+      background: #333;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .home .btn:hover {
+      background: #f08080;
+    }
+
+    .products {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .products .heading {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .products .heading span {
+      color: #ff3399;
+    }
+
+    .product-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      width: 220px;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .discount {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #ffcce0;
+      color: #cc0055;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      border-radius: 5px;
+    }
+
+    .product-card h3 {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .price {
+      color: #ff3399;
+      font-size: 1.2rem;
+      margin-top: 5px;
+    }
+
+    .price span {
+      text-decoration: line-through;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Anggie' Shop<span>.</span></div>
+
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <nav>
+      <ul>
+        <li><a href="login1.html">Login</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="about1.html">About</a></li>
+        <li><a href="shop2.html">Shop</a></li>
+        <li><a href="cart1.html">Cart</a></li>
+        <li><a href="contact1.html">Contact</a></li>
+        <li><a href="invoice1.html">Invoice</a></li>
+        
+      </ul>
+    </nav>
+
+    <div class="icons">
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-shopping-cart"></a>
+      <a href="#" class="fas fa-user"></a>
+    </div>
+  </header>
+
+  <section class="home" id="home">
+    <div class="content">
+      <h3>Anggie' Shop</h3>
+      <span>Natural & Beautiful</span>
+      <p>Anggie Shop adalah jenis usaha yang bergerak di bidang penjualan produk skincare dan kecantikan,
+         baik secara online maupun offline. Fokus utama kami adalah menyediakan produk skincare lokal dan internasional
+         yang sudah terjamin aman, BPOM, dan berkualitas tinggi.</p>
+    </div>
+  </section>
+
+</body>
+</html>

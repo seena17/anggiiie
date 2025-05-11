@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login & Register - Anggie' Shop</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f8f0f5;
+      margin: 0;
+    }
+
+    header {
+      background-color: #e91e63;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      margin: 40px auto;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      background-color: #e91e63;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 10px 10px 0 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .tabs button.active {
+      background-color: #c2185b;
+    }
+
+    form {
+      display: none;
+    }
+
+    form.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Anggie' Shop</div>
+    <nav>
+      <ul>
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="about1.html">About</a></li>
+        <li><a href="shop2.html">Shop</a></li>
+        <li><a href="cart1.html">Cart</a></li>
+        <li><a href="login1.html">Login</a></li>
+        <li><a href="contact1.html">Contact</a></li>
+        <li><a href="invoice1.html">Invoice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="tabs">
+      <button id="loginTab" class="active" onclick="switchForm('login')">Login</button>
+      <button id="registerTab" onclick="switchForm('register')">Register</button>
+    </div>
+
+   <form id="loginForm" class="active">
+  <label for="loginEmail">Email</label>
+  <input type="email" id="loginEmail" required />
+
+  <label for="loginPassword">Password</label>
+  <input type="password" id="loginPassword" required />
+
+  <button type="submit">Login</button>
+</form>
+
+    <form id="registerForm">
+      <label for="registerName">Nama</label>
+      <input type="text" id="registerName" required />
+
+      <label for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" required />
+
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" required />
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+  // Fungsi ganti tab login/register
+  function switchForm(form) {
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+
+    if (form === 'login') {
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+    } else {
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+    }
+  }
+
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault(); 
+    alert("Login berhasil!");
+    window.location.href = "index1.html"; 
+  });
+</script>
+
+</body>
+</html>
+
